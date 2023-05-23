@@ -1,0 +1,276 @@
+\hypertarget{_d_a_adox_8cc}{}\doxysection{DAAdox.\+cc File Reference}
+\label{_d_a_adox_8cc}\index{DAAdox.cc@{DAAdox.cc}}
+
+
+Implementation of the Convex Hull algorithm using DCEL data structure.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$bits/stdc++.\+h$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_point}{Point}}
+\begin{DoxyCompactList}\small\item\em Struct to represent a point in the 2D plane. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_vertex}{Vertex}}
+\begin{DoxyCompactList}\small\item\em Struct to represent a vertex in the DCEL data structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_half_edge}{Half\+Edge}}
+\begin{DoxyCompactList}\small\item\em Struct to represent a half-\/edge in the DCEL data structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_face}{Face}}
+\begin{DoxyCompactList}\small\item\em Struct to represent a face in the DCEL data structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_vertex}{Vertex}} $\ast$ \mbox{\hyperlink{_d_a_adox_8cc_ae924019dbee7c5ee1d5755a3ef795d75}{add\+\_\+vertex}} (\mbox{\hyperlink{struct_point}{Point}} P)
+\begin{DoxyCompactList}\small\item\em Adds a new vertex to the DCEL data structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_face}{Face}} $\ast$ \mbox{\hyperlink{_d_a_adox_8cc_ab7ab0ed57140f2aa4d11a87cadb69e33}{add\+\_\+face}} (\mbox{\hyperlink{struct_half_edge}{Half\+Edge}} $\ast$incident\+\_\+edge)
+\begin{DoxyCompactList}\small\item\em Function to add a new face to the DCEL data structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_half_edge}{Half\+Edge}} $\ast$ \mbox{\hyperlink{_d_a_adox_8cc_a71e62df912b80b6cf981cd5e86fdf323}{add\+\_\+half\+\_\+edge}} (\mbox{\hyperlink{struct_half_edge}{Half\+Edge}} $\ast$twin, \mbox{\hyperlink{struct_half_edge}{Half\+Edge}} $\ast$prev, \mbox{\hyperlink{struct_vertex}{Vertex}} $\ast$incident\+\_\+vertex)
+\begin{DoxyCompactList}\small\item\em Function to add a new half edge to the DCEL data structure. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{_d_a_adox_8cc_a8f9669196504671766c7cf63ad36f3db}{angle}} (\mbox{\hyperlink{struct_point}{Point}} p1, \mbox{\hyperlink{struct_point}{Point}} p2, \mbox{\hyperlink{struct_point}{Point}} p3)
+\begin{DoxyCompactList}\small\item\em Function to calculate the angle between two line segments. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_d_a_adox_8cc_a289a7ed87503be3cc3ccb0c04f1b7153}{is\+Notch}} (\mbox{\hyperlink{struct_point}{Point}} p1, \mbox{\hyperlink{struct_point}{Point}} p2, \mbox{\hyperlink{struct_point}{Point}} p3)
+\begin{DoxyCompactList}\small\item\em Function to check if a vertex is a notch. \end{DoxyCompactList}\item 
+unordered\+\_\+set$<$ int $>$ \mbox{\hyperlink{_d_a_adox_8cc_a95217a4df93416798f94257629f5453f}{find\+Notches}} (vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ points)
+\begin{DoxyCompactList}\small\item\em Function to find all notches in a polygon. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_d_a_adox_8cc_aa78edbc8547ee9b33a1ee02322e27005}{is\+Point\+Inside\+Polygon}} (vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&polygon, \mbox{\hyperlink{struct_point}{Point}} \&p)
+\begin{DoxyCompactList}\small\item\em Check if a point is inside a polygon using ray casting algorithm. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_d_a_adox_8cc_a9d478ee25982c7123db425d2cf8a0567}{is\+Reflex}} (\mbox{\hyperlink{struct_point}{Point}} p1, \mbox{\hyperlink{struct_point}{Point}} p2, \mbox{\hyperlink{struct_point}{Point}} p3)
+\begin{DoxyCompactList}\small\item\em Check if an angle is reflex or not. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \mbox{\hyperlink{_d_a_adox_8cc_a851d9cb01e42ab6b50ca928ab29bd3a6}{min\+ARect}} (vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&polygon)
+\begin{DoxyCompactList}\small\item\em Calculate the coordinates of the rectangle with maximum area that fits inside a polygon. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $>$ \mbox{\hyperlink{_d_a_adox_8cc_adaa5e65e271336bb1732121429d3042a}{algo\+Imp}} (vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&polygon)
+\begin{DoxyCompactList}\small\item\em Implements the algorithm for triangulating a simple polygon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_d_a_adox_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{_d_a_adox_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_d_a_adox_8cc_a519095bbfd80c723555a642e5a4a202d}\label{_d_a_adox_8cc_a519095bbfd80c723555a642e5a4a202d}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $\ast$ $>$ {\bfseries vertices}
+\begin{DoxyCompactList}\small\item\em Vector of vertices. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_d_a_adox_8cc_aa01bdac8b534de754344bbf62eb8dad4}\label{_d_a_adox_8cc_aa01bdac8b534de754344bbf62eb8dad4}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_half_edge}{Half\+Edge}} $\ast$ $>$ {\bfseries half\+\_\+edges}
+\begin{DoxyCompactList}\small\item\em Vector of half-\/edges. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_d_a_adox_8cc_a45fb415cf895343dfbb2ab3ee858c692}\label{_d_a_adox_8cc_a45fb415cf895343dfbb2ab3ee858c692}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_face}{Face}} $\ast$ $>$ {\bfseries faces}
+\begin{DoxyCompactList}\small\item\em Vector of faces. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_d_a_adox_8cc_a57d34f23b769820112b4f06a1247ae4a}\label{_d_a_adox_8cc_a57d34f23b769820112b4f06a1247ae4a}} 
+std\+::unordered\+\_\+map$<$ int, int $>$ {\bfseries u}
+\begin{DoxyCompactList}\small\item\em Hash map to store the mapping from ID to index for vertices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the Convex Hull algorithm using DCEL data structure. 
+
+Main function for executing the algorithm on a user-\/defined polygon This file contains the main function which allows the user to input a polygon and execute the algorithm for triangulating it. The polygon is first converted to a DCEL data structure, and then the algorithm is applied to obtain the triangulation. The results are printed to the console along with the execution time of the algorithm.
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_d_a_adox_8cc_ab7ab0ed57140f2aa4d11a87cadb69e33}\label{_d_a_adox_8cc_ab7ab0ed57140f2aa4d11a87cadb69e33}} 
+\index{DAAdox.cc@{DAAdox.cc}!add\_face@{add\_face}}
+\index{add\_face@{add\_face}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{add\_face()}{add\_face()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_face}{Face}} $\ast$ add\+\_\+face (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_half_edge}{Half\+Edge}} $\ast$}]{incident\+\_\+edge }\end{DoxyParamCaption})}
+
+
+
+Function to add a new face to the DCEL data structure. 
+
+/$\ast$$\ast$
+
+
+\begin{DoxyParams}{Parameters}
+{\em incident\+\_\+edge} & A pointer to an incident edge of the new face \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Face$\ast$ A pointer to the new face 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_a_adox_8cc_a71e62df912b80b6cf981cd5e86fdf323}\label{_d_a_adox_8cc_a71e62df912b80b6cf981cd5e86fdf323}} 
+\index{DAAdox.cc@{DAAdox.cc}!add\_half\_edge@{add\_half\_edge}}
+\index{add\_half\_edge@{add\_half\_edge}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{add\_half\_edge()}{add\_half\_edge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_half_edge}{Half\+Edge}} $\ast$ add\+\_\+half\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_half_edge}{Half\+Edge}} $\ast$}]{twin,  }\item[{\mbox{\hyperlink{struct_half_edge}{Half\+Edge}} $\ast$}]{prev,  }\item[{\mbox{\hyperlink{struct_vertex}{Vertex}} $\ast$}]{incident\+\_\+vertex }\end{DoxyParamCaption})}
+
+
+
+Function to add a new half edge to the DCEL data structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em twin} & A pointer to the twin half edge of the new half edge \\
+\hline
+{\em prev} & A pointer to the previous half edge of the new half edge \\
+\hline
+{\em incident\+\_\+vertex} & A pointer to the incident vertex of the new half edge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Half\+Edge$\ast$ A pointer to the new half edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_a_adox_8cc_ae924019dbee7c5ee1d5755a3ef795d75}\label{_d_a_adox_8cc_ae924019dbee7c5ee1d5755a3ef795d75}} 
+\index{DAAdox.cc@{DAAdox.cc}!add\_vertex@{add\_vertex}}
+\index{add\_vertex@{add\_vertex}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{add\_vertex()}{add\_vertex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertex}{Vertex}} $\ast$ add\+\_\+vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}}}]{P }\end{DoxyParamCaption})}
+
+
+
+Adds a new vertex to the DCEL data structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P} & The point representing the vertex.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The newly added vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_a_adox_8cc_adaa5e65e271336bb1732121429d3042a}\label{_d_a_adox_8cc_adaa5e65e271336bb1732121429d3042a}} 
+\index{DAAdox.cc@{DAAdox.cc}!algoImp@{algoImp}}
+\index{algoImp@{algoImp}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{algoImp()}{algoImp()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $>$ algo\+Imp (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&}]{polygon }\end{DoxyParamCaption})}
+
+
+
+Implements the algorithm for triangulating a simple polygon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & vector of points representing the simple polygon\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of vectors of points representing the triangles formed by the triangulation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_a_adox_8cc_a8f9669196504671766c7cf63ad36f3db}\label{_d_a_adox_8cc_a8f9669196504671766c7cf63ad36f3db}} 
+\index{DAAdox.cc@{DAAdox.cc}!angle@{angle}}
+\index{angle@{angle}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{angle()}{angle()}}
+{\footnotesize\ttfamily double angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p1,  }\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p2,  }\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p3 }\end{DoxyParamCaption})}
+
+
+
+Function to calculate the angle between two line segments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & First point on the line segment \\
+\hline
+{\em p2} & \mbox{\hyperlink{struct_vertex}{Vertex}} point shared by both line segments \\
+\hline
+{\em p3} & Second point on the line segment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double The angle between the two line segments in radians 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_a_adox_8cc_a95217a4df93416798f94257629f5453f}\label{_d_a_adox_8cc_a95217a4df93416798f94257629f5453f}} 
+\index{DAAdox.cc@{DAAdox.cc}!findNotches@{findNotches}}
+\index{findNotches@{findNotches}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{findNotches()}{findNotches()}}
+{\footnotesize\ttfamily unordered\+\_\+set$<$ int $>$ find\+Notches (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$}]{points }\end{DoxyParamCaption})}
+
+
+
+Function to find all notches in a polygon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & A vector of \mbox{\hyperlink{struct_point}{Point}} objects representing the vertices of the polygon \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unordered\+\_\+set$<$int$>$ An unordered set of integer indices representing the notches in the polygon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_a_adox_8cc_a289a7ed87503be3cc3ccb0c04f1b7153}\label{_d_a_adox_8cc_a289a7ed87503be3cc3ccb0c04f1b7153}} 
+\index{DAAdox.cc@{DAAdox.cc}!isNotch@{isNotch}}
+\index{isNotch@{isNotch}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{isNotch()}{isNotch()}}
+{\footnotesize\ttfamily bool is\+Notch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p1,  }\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p2,  }\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p3 }\end{DoxyParamCaption})}
+
+
+
+Function to check if a vertex is a notch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & The previous point of the vertex \\
+\hline
+{\em p2} & The vertex point \\
+\hline
+{\em p3} & The next point of the vertex \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the vertex is a notch 
+
+false If the vertex is not a notch 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_a_adox_8cc_aa78edbc8547ee9b33a1ee02322e27005}\label{_d_a_adox_8cc_aa78edbc8547ee9b33a1ee02322e27005}} 
+\index{DAAdox.cc@{DAAdox.cc}!isPointInsidePolygon@{isPointInsidePolygon}}
+\index{isPointInsidePolygon@{isPointInsidePolygon}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{isPointInsidePolygon()}{isPointInsidePolygon()}}
+{\footnotesize\ttfamily bool is\+Point\+Inside\+Polygon (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&}]{polygon,  }\item[{\mbox{\hyperlink{struct_point}{Point}} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+Check if a point is inside a polygon using ray casting algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & The polygon as a vector of points. \\
+\hline
+{\em p} & The point to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the point is inside the polygon. 
+
+false Otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_a_adox_8cc_a9d478ee25982c7123db425d2cf8a0567}\label{_d_a_adox_8cc_a9d478ee25982c7123db425d2cf8a0567}} 
+\index{DAAdox.cc@{DAAdox.cc}!isReflex@{isReflex}}
+\index{isReflex@{isReflex}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{isReflex()}{isReflex()}}
+{\footnotesize\ttfamily bool is\+Reflex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p1,  }\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p2,  }\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p3 }\end{DoxyParamCaption})}
+
+
+
+Check if an angle is reflex or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & First point of the angle. \\
+\hline
+{\em p2} & Second point of the angle (the vertex). \\
+\hline
+{\em p3} & Third point of the angle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the angle is reflex. 
+
+false Otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_a_adox_8cc_a851d9cb01e42ab6b50ca928ab29bd3a6}\label{_d_a_adox_8cc_a851d9cb01e42ab6b50ca928ab29bd3a6}} 
+\index{DAAdox.cc@{DAAdox.cc}!minARect@{minARect}}
+\index{minARect@{minARect}!DAAdox.cc@{DAAdox.cc}}
+\doxysubsubsection{\texorpdfstring{minARect()}{minARect()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ min\+ARect (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&}]{polygon }\end{DoxyParamCaption})}
+
+
+
+Calculate the coordinates of the rectangle with maximum area that fits inside a polygon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & The polygon as a vector of points. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$\+Point$>$ The coordinates of the four corners of the rectangle. 
+\end{DoxyReturn}
